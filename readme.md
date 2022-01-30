@@ -19,7 +19,6 @@ This script sends a notification to any telegram chat/group/channel when added a
     - Line 5: [konusanlar-ticket-notifier.service](konusanlar-ticket-notifier.service). // User
     - Line 6: [konusanlar-ticket-notifier.service](konusanlar-ticket-notifier.service). // Group
 * Install and run; 
-    - `$ pip3 install -r requirements.txt`
     - `$ sudo cp konusanlar-ticket-notifier.service /etc/systemd/system/konusanlar-ticket-notifier.service`
     - `$ chmod +x konusanlar-ticket-notifier.sh`
     - `$ sudo systemctl daemon-reload`
