@@ -1,0 +1,13 @@
+[Unit]
+Description=Konusanlar Ticket Notifier Bot Service
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Type=simple
+#Restart=always
+WorkingDirectory=/home/user/full/path/
+ExecStart="/home/user/full/path/konusanlar-ticket-notifier.sh"
+
+[Install]
+WantedBy=multi-user.target
