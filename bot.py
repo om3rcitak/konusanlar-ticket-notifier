@@ -5,7 +5,10 @@ import urllib3
 import datetime
 
 # variables
+telegram_bot_api_key = ''
+telegram_chat_id = ''
 api_url = 'https://api.backstage.solutions/api/v1.0/'
+tickets_link = 'https://www.mobilet.com/bucket-event/konusanlar-hasan-can-kaya-7031'
 
 # settings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -38,12 +41,12 @@ def getEvents(access_token, bucket_id):
 last_found_at = None
 while True:
     tokens = getTokens()
-    bucket = getEvents(tokens['access_token'], 8837)  # 7031 = konusanlar bucket id
+    bucket = getEvents(tokens['access_token'], 7031)  # 7031 = konusanlar bucket id
     today = datetime.datetime.now().strftime("%Y-%m-%d")
 
     if len(bucket['ChildEvents']) > 0 and today != last_found_at:
         last_found_at = today
-        print('found new event!')
-        print(bucket)
+        text = 'Yeni etkinlik eklendi! Hemen bilet satin almak için tıklayın: ' + tickets_link
+        requests.get('https://api.telegram.org/bot' + telegram_bot_api_key + '/sendMessage?chat_id=' + telegram_chat_id + '&text=' + text)
 
-    time.sleep(2)
+    time.sleep(5)
